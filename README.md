@@ -49,15 +49,27 @@
     - **데드라인:** 매일 23:59
     - **Commit message 예시**
       ```
-      solve: {[이름]} ([알고리즘 사이트]) [문제 이름 풀이]
+      solve: {[이름]} ([알고리즘 사이트]) [알고리즘/SQL] [문제 이름 풀이] 
   
-      예: solve: {chaeyoon.lee} (programmers) 완주하지 못한 선수
+      예: solve: {chaeyoon.lee} programmers [SELECT] 완주하지 못한 선수
+      ```
+    - **업로드 폴더명 규칙**
+      ```
+      [주차]week
+
+      예: 1week, 2week
       ```
     - **업로드 파일명 규칙**
       ```
-      [알고리즘 사이트] [문제 이름].[확장자]
+      [알고리즘 사이트]_[알고리즘/SQL]_[문제 이름].[확장자]
+
+      예: `programmers_SELECT_완주하지 못한 선수.py`
+      예: `programmers_그리디_완주하지 못한 선수.py`
       ```
-  
+    - **최종 업로드 예시**
+      ```
+      예: AlgorithmStudy/이름/1week/programmers_SELECT_완주하지 못한 선수.py
+      ```
     - **풀이 파일 예시**
       ```python
       # 문제 접근 (해결 순서대로 주석 작성)

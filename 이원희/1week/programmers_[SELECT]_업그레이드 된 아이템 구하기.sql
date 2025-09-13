@@ -1,0 +1,20 @@
+"""
+1. ITEM_INFO와 ITEM_TREE를 ID 컬럼 기준으로 JOIN
+2. 조건: RARITY = 'RARE'인 아이템의 업그레이드 아이템의 ID, NAME, RARITY 출력
+3. 바로 조건을 구현하는 건 어려워서, 서브 쿼리 추가 : RARITY = 'RARE'
+4. 다음으로 PARENT_ID가 해당 ID인 조건 부여
+3. ITEM ID 기준 내림차순 정렬
+"""
+
+SELECT II.ITEM_ID, II.ITEM_NAME, II.RARITY
+    
+FROM ITEM_INFO AS II
+JOIN ITEM_TREE AS IT
+ON II.ITEM_ID = IT.ITEM_ID
+
+WHERE IT.PARENT_ITEM_ID IN (
+    SELECT ITEM_ID
+    FROM ITEM_INFO
+    WHERE RARITY = 'RARE'
+)
+ORDER BY II.ITEM_ID DESC;

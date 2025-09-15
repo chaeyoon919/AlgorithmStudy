@@ -8,6 +8,7 @@ import java.util.StringTokenizer;
 2. 문자를 돌면서 붙어있는 문자 한개로 만들기 (apple 이면 aple, aaazbz이면 azbz)
 3. Set에 저장한 문자열과 2번에서 만든 문자열 개수가 다르면 같은 문자가 떨어져서 나타난 경우이므로 그룹단어 X
 4. Set에 저장한 문자열과 2번에서 만든 문자열 개수가 같으면 그룹단어이므로 count++
+5. But.... 그냥 visited 배열처럼 하나 만들어서 문자열 돌다가 방문했던 곳을 이후에 다시 방문하면 false로 리턴해도 됐다,,
 * */
 public class baekjoon_문자열_그룹_단어_체커 {
 
@@ -32,6 +33,8 @@ public class baekjoon_문자열_그룹_단어_체커 {
             for(int j = 1; j < word.length(); j++){
                 char c = word.charAt(j);
                 set.add(c);
+
+                //앞의 문자와 다르면 추가하기
                 if(word.charAt(j - 1) != c){
                     sb.append(c);
                 }

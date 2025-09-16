@@ -1,0 +1,5 @@
+-- where 조건절에서 원하는 RARITY를 찾고 찾은 컬럼들의 PRICE를 더한 값 출력하기
+
+SELECT SUM(PRICE) AS TOTAL_PRICE
+FROM ITEM_INFO
+WHERE RARITY = 'LEGEND';

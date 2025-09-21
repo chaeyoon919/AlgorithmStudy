@@ -1,0 +1,28 @@
+## Mysql에서는 median을 나타내는 함수가 존재하지 않음
+## 방법 1. PERCENT_RANK() 이용 (홀수 데이터셋에서만 정확)
+WITH PR AS (
+    SELECT 
+        LAT_N,     -- 각 값이 전체 데이터에서 어디쯤(0~1) 위치하는지 백분위 계산
+        PERCENT_RANK() OVER (ORDER BY LAT_N) AS PERCENT
+    FROM STATION
+) 
+SELECT 
+    ROUND(LAT_N,4) AS MED_LAT_N
+FROM PR
+WHERE PERCENT = 0.5;   -- 중앙값에 해당하는 0.5 지점을 선택
+                       -- 다만 **짝수** 데이터셋에서는 pr=0.5가 존재하지 않아 결과가 없으므로 주의가 필요함!
+
+## 방법 2. ROW_NUMBER() + COUNT() 이용 (홀수/짝수 모두 가능)
+WITH t AS (
+  SELECT
+    LAT_N,
+    ROW_NUMBER() OVER (ORDER BY LAT_N) AS rn,  -- 정렬 순서대로 고유 행 번호
+    COUNT(*)     OVER ()               AS cnt  -- 전체 행 개수
+  FROM STATION
+)
+SELECT ROUND(AVG(LAT_N), 4) AS MED_LAT_N
+FROM t
+WHERE rn IN (
+    FLOOR((cnt + 1)/2),  -- 홀수 -> 정확히 중앙, 짝수 -> 첫 번째 중앙 인덱스
+    CEIL((cnt + 1)/2)    -- 홀수 -> 같은 값 반복, 짝수-> 두 번째 중앙 인덱스
+);

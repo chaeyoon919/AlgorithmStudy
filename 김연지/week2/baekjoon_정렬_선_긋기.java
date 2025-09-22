@@ -61,8 +61,8 @@ public class baekjoon_정렬_선_긋기 {
                     total_lines.get(compare)[1] = Math.max(lines[i][1], total_lines.get(compare)[1]);
                     break;
                 }else {
-                    compare = j;
-                    if(compare == total_lines.size() - 1){
+                    compare = j + 1;
+                    if(compare == total_lines.size()){
                         total_lines.add(lines[i]);
                         break;
                     }

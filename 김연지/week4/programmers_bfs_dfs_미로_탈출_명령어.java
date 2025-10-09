@@ -8,7 +8,7 @@ DFS & 백트래킹
 2. (k - 거리)가 홀수라면 impossible
 */
 
-class Solution {
+class Solution_미로_탈출_명령어 {
 
     static int N, M, X, Y, R, C, K;
     static int[] dx = {1, 0, 0, -1};

@@ -59,10 +59,10 @@ WHERE rn_desc = 1
 
 ## ✅ 개념 정리
 
-1. `DISTINCT` **: SELECT 절에 나열된 모든 컬럼의 조합(row 전체)**을 하나의 단위로 보고 중복을 제거
+1. `DISTINCT` : **SELECT 절에 나열된 모든 컬럼의 조합(row 전체)**을 하나의 단위로 보고 중복을 제거
     1. 함수가 아님 → 즉, 내가 원하는 컬럼에만 적용하는 것은 불가능
     2. `DISTINCT` 뒤에 여러 개의 컬럼이 붙는다면
         1. 개별 컬럼들에 적용되는 것이 아님
         2. **중복되는 조합 중 하나만 출력하는 것**
-    3. https://blog.naver.com/PostView.nhn?blogId=owl6615&logNo=222193523575
+    3. [참고 자료](https://blog.naver.com/PostView.nhn?blogId=owl6615&logNo=222193523575)
 2. [공식 문제 풀이](https://www.youtube.com/watch?v=S930HXU3Sdk)
